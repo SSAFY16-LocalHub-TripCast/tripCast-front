@@ -1,4 +1,4 @@
-const API_BASE = '/api'
+export const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api'
 
 const jsonHeaders = {
   'Content-Type': 'application/json',
@@ -75,4 +75,13 @@ export async function deletePost(postId, { password }) {
     body: JSON.stringify({ password }),
   })
   return parseResponse(res, 'Failed to delete post')
+}
+
+export async function sendChatbotMessage(message) {
+  const res = await fetch(`${API_BASE}/chat`, {
+    method: 'POST',
+    headers: jsonHeaders,
+    body: JSON.stringify({ message }),
+  })
+  return parseResponse(res, '죄송합니다. AI 서버에 문제가 생겼습니다.')
 }
