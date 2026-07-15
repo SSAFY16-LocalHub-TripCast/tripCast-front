@@ -93,9 +93,17 @@ watch(page, loadBoardPosts)
   }
 
   .board-header {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
     margin-bottom: 12px;
+  }
+
+  .board-header > div {
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .board-card {

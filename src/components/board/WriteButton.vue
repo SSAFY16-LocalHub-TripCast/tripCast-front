@@ -23,13 +23,12 @@
 
 @media (max-width: 768px) {
   .write-button {
-    position: fixed;
-    right: 16px;
-    bottom: 168px;
-    z-index: 999;
+    position: static;
     padding: 9px 14px;
     font-size: 0.95rem;
-    box-shadow: 0 10px 20px rgba(15, 118, 110, 0.24);
+    box-shadow: 0 8px 16px rgba(15, 118, 110, 0.2);
+    align-self: center;
+    margin-left: 8px;
   }
 }
 </style>
