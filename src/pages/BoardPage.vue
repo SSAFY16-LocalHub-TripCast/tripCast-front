@@ -36,6 +36,11 @@ const loadBoardPosts = async () => {
   try {
     const skip = (page.value - 1) * PAGE_LIMIT
     const data = await fetchPosts(skip, PAGE_LIMIT)
+    console.log('[BoardPage] fetchPosts response:', data)
+    console.log(
+      '[BoardPage] categories:',
+      data.map((p) => p.category),
+    )
     posts.value = data
     hasNext.value = data.length === PAGE_LIMIT
   } catch (err) {

@@ -2,6 +2,15 @@
   <form class="post-form" @submit.prevent="submitPost">
     <div class="form-card">
       <label>
+        카테고리
+        <select v-model="category">
+          <option value="community">커뮤니티</option>
+          <option value="travel">여행</option>
+          <option value="food">맛집</option>
+          <option value="review">리뷰</option>
+        </select>
+      </label>
+      <label>
         제목
         <input v-model="title" type="text" placeholder="제목을 입력하세요" />
       </label>
@@ -40,6 +49,7 @@ const props = defineProps({
 const title = ref('')
 const content = ref('')
 const password = ref('')
+const category = ref('community')
 const error = ref(null)
 const router = useRouter()
 const isEdit = computed(() => props.postId != null)
@@ -50,6 +60,7 @@ const loadPost = async () => {
     const data = await fetchPost(props.postId)
     title.value = data.title
     content.value = data.content
+    category.value = data.category || 'community'
   } catch (err) {
     error.value = err
     console.error(err)
@@ -72,6 +83,7 @@ const submitPost = async () => {
       const updatePayload = {
         title: title.value,
         content: content.value,
+        category: category.value,
       }
 
       if (password.value) {
@@ -80,7 +92,12 @@ const submitPost = async () => {
 
       await updatePost(props.postId, updatePayload)
     } else {
-      await createPost({ title: title.value, content: content.value, password: password.value })
+      await createPost({
+        title: title.value,
+        content: content.value,
+        password: password.value,
+        category: category.value,
+      })
     }
     router.push('/board')
   } catch (err) {

@@ -45,20 +45,27 @@ export async function verifyPassword(postId, password) {
   return parseResponse(res, 'Failed to verify password')
 }
 
-export async function createPost({ title, content, password }) {
-  const res = await fetch(`${API_BASE}/posts`, {
-    method: 'POST',
-    headers: jsonHeaders,
-    body: JSON.stringify({ title, content, password }),
-  })
-  return parseResponse(res, 'Failed to create post')
-}
-
-export async function updatePost(postId, { title, content, password }) {
+export async function createPost({ title, content, password, category }) {
   const body = {
     ...(title != null ? { title } : {}),
     ...(content != null ? { content } : {}),
     ...(password != null && password !== '' ? { password } : {}),
+    ...(category != null && category !== '' ? { category } : {}),
+  }
+  const res = await fetch(`${API_BASE}/posts`, {
+    method: 'POST',
+    headers: jsonHeaders,
+    body: JSON.stringify(body),
+  })
+  return parseResponse(res, 'Failed to create post')
+}
+
+export async function updatePost(postId, { title, content, password, category }) {
+  const body = {
+    ...(title != null ? { title } : {}),
+    ...(content != null ? { content } : {}),
+    ...(password != null && password !== '' ? { password } : {}),
+    ...(category != null && category !== '' ? { category } : {}),
   }
   const res = await fetch(`${API_BASE}/posts/${postId}`, {
     method: 'PUT',
