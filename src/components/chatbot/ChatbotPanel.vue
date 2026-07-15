@@ -104,7 +104,7 @@ const sendMessage = async () => {
   max-height: 82vh;
   border-radius: 24px;
   background: #fff;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -114,7 +114,7 @@ const sendMessage = async () => {
   justify-content: space-between;
   align-items: center;
   padding: 14px 16px;
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
   color: #fff;
 }
 .close {
@@ -127,7 +127,7 @@ const sendMessage = async () => {
 .chat-area {
   flex: 1;
   padding: 16px;
-  background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
   min-height: 280px;
   overflow-y: auto;
   display: flex;
@@ -158,15 +158,15 @@ const sendMessage = async () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #dbeafe;
+  background: #e2e8f0;
   font-size: 1rem;
   box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
 }
 .profile.user .profile-icon {
-  background: #dbeafe;
+  background: #ccfbf1;
 }
 .profile.bot .profile-icon {
-  background: #e0f2fe;
+  background: #fef3c7;
 }
 .profile-label {
   font-size: 0.7rem;
@@ -188,10 +188,11 @@ const sendMessage = async () => {
   border-radius: 16px 16px 16px 8px;
   background: #fff;
   color: #0f172a;
+  border: 1px solid #e2e8f0;
 }
 .message.user-message {
   border-radius: 16px 16px 8px 16px;
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
   color: #fff;
 }
 .message.bot-message::before {
@@ -215,7 +216,7 @@ const sendMessage = async () => {
   height: 0;
   border-top: 7px solid transparent;
   border-bottom: 7px solid transparent;
-  border-left: 7px solid #3b82f6;
+  border-left: 7px solid #14b8a6;
   pointer-events: none;
 }
 .typing-bubble {
@@ -246,15 +247,16 @@ const sendMessage = async () => {
 .input-area input {
   flex: 1;
   padding: 10px 12px;
-  border: 1px solid #ddd;
+  border: 1px solid #cbd5e1;
   border-radius: 12px;
   margin-right: 10px;
   font-size: 0.95rem;
+  background: #f8fafc;
 }
 .input-area button {
   min-width: 68px;
   border: none;
-  background: #2563eb;
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
   color: #fff;
   border-radius: 12px;
   cursor: pointer;
@@ -276,8 +278,8 @@ const sendMessage = async () => {
 @media (max-width: 768px) {
   .chatbot-panel {
     width: 100vw;
-    height: 100vh;
-    max-height: 100vh;
+    height: 100dvh;
+    max-height: 100dvh;
     border-radius: 0;
   }
 }

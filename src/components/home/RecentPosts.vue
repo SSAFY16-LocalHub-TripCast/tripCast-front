@@ -6,8 +6,10 @@
     </div>
     <ul>
       <li v-for="post in posts" :key="post.id">
-        <span class="title">{{ post.title }}</span>
-        <span class="date">{{ formatDate(post.created_at) }}</span>
+        <router-link :to="{ name: 'BoardDetail', params: { id: post.id } }" class="post-link">
+          <span class="title">{{ post.title }}</span>
+          <span class="date">{{ formatDate(post.created_at) }}</span>
+        </router-link>
       </li>
     </ul>
   </section>
@@ -44,9 +46,10 @@ onMounted(loadRecentPosts)
 <style scoped>
 .recent-posts {
   padding: 24px;
+  border: 1px solid var(--color-border);
   border-radius: 16px;
-  background: #ffffff;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  background: var(--color-surface);
+  box-shadow: 0 8px 24px var(--color-shadow);
 }
 .section-title {
   display: flex;
@@ -56,10 +59,10 @@ onMounted(loadRecentPosts)
 }
 .section-title h3 {
   margin: 0;
-  color: #0f172a;
+  color: var(--color-text);
 }
 .section-title span {
-  color: #0f766e;
+  color: var(--color-primary);
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -69,27 +72,34 @@ onMounted(loadRecentPosts)
   margin: 0;
 }
 .recent-posts li {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid #e2e8f0;
-  transition:
-    background-color 0.2s ease,
-    padding-left 0.2s ease;
-}
-.recent-posts li:hover {
-  background-color: #f8fafc;
-  padding-left: 6px;
+  border-bottom: 1px solid var(--color-border);
 }
 .recent-posts li:last-child {
   border-bottom: none;
 }
+.post-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 12px 10px;
+  border-radius: 10px;
+  color: inherit;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    padding-left 0.2s ease;
+}
+.post-link:hover {
+  background-color: var(--color-surface-2);
+  padding-left: 12px;
+}
 .title {
   font-weight: 600;
-  color: #334155;
+  color: var(--color-text);
 }
 .date {
-  color: #64748b;
+  color: var(--color-muted);
   font-size: 0.9rem;
 }
 </style>

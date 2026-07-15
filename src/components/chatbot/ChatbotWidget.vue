@@ -23,10 +23,22 @@ const toggleOpen = () => {
   bottom: 92px;
   z-index: 1000;
 }
+
 @media (max-width: 768px) {
   .chatbot-widget {
     right: 16px;
     bottom: 84px;
+    inset: auto;
+    display: block;
+  }
+
+  .chatbot-widget :deep(.chatbot-panel) {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    border-radius: 0;
   }
 }
 </style>

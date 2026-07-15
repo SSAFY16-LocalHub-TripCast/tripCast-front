@@ -1,26 +1,28 @@
 <template>
-  <table class="board-table">
-    <thead>
-      <tr>
-        <th>번호</th>
-        <th>제목</th>
-        <th>카테고리</th>
-        <th>생성일</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="post in posts" :key="post.id">
-        <td>{{ post.id }}</td>
-        <td>
-          <router-link :to="{ name: 'BoardDetail', params: { id: post.id } }" class="post-title">
-            {{ post.title }}
-          </router-link>
-        </td>
-        <td>{{ post.category }}</td>
-        <td>{{ formatDate(post.created_at) }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="board-table-card">
+    <table class="board-table">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>카테고리</th>
+          <th>생성일</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="post in posts" :key="post.id">
+          <td>{{ post.id }}</td>
+          <td>
+            <router-link :to="{ name: 'BoardDetail', params: { id: post.id } }" class="post-title">
+              {{ post.title }}
+            </router-link>
+          </td>
+          <td>{{ post.category }}</td>
+          <td>{{ formatDate(post.created_at) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script setup>
@@ -57,29 +59,38 @@ const formatDate = (value) => {
 </script>
 
 <style scoped>
+.board-table-card {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: var(--color-surface);
+  box-shadow: 0 8px 24px var(--color-shadow);
+}
 .board-table {
   width: 100%;
   border-collapse: collapse;
-  background: #fff;
+  background: var(--color-surface);
 }
 .board-table th,
 .board-table td {
   padding: 14px 12px;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--color-border);
   text-align: left;
 }
 .board-table th {
-  background: #f8fafc;
+  background: var(--color-surface-2);
   font-weight: 700;
-  color: #334155;
+  color: var(--color-muted);
+}
+.board-table tbody tr {
+  transition: background-color 0.2s ease;
 }
 .board-table tbody tr:hover {
-  background: #f8fafc;
-  transition: background 0.2s ease;
+  background: var(--color-surface-2);
 }
 
 .post-title {
-  color: #0f766e;
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 600;
 }
