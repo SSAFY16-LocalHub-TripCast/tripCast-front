@@ -25,9 +25,6 @@
         </div>
       </div>
 
-      <div v-if="post.created_at" class="time-info">
-        작성 시간: {{ formatDate(post.created_at) }}
-      </div>
       <div class="content">{{ post.content }}</div>
     </div>
   </div>
@@ -121,14 +118,16 @@ const handlePasswordConfirm = async (password) => {
 
 <style scoped>
 .page {
-  padding: 20px;
+  padding: 20px 0 32px;
 }
 
 .back-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   margin-bottom: 16px;
-  color: #2563eb;
+  color: #0f766e;
   text-decoration: none;
+  font-weight: 700;
 }
 
 .back-link:hover {
@@ -136,18 +135,21 @@ const handlePasswordConfirm = async (password) => {
 }
 
 .detail-card {
-  background: #fff;
-  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
 }
 
 .detail-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .header-meta {
@@ -155,12 +157,23 @@ const handlePasswordConfirm = async (password) => {
   flex-direction: column;
   align-items: flex-end;
   gap: 10px;
+  min-width: 180px;
 }
 
 .category {
-  margin: 0 0 6px;
-  color: #64748b;
+  margin: 0 0 8px;
+  color: #0f766e;
   font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.detail-header h2 {
+  margin: 0;
+  color: #0f172a;
+  line-height: 1.35;
+  word-break: break-word;
 }
 
 .date {
@@ -172,23 +185,33 @@ const handlePasswordConfirm = async (password) => {
 .action-row {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .btn {
   border: none;
-  border-radius: 8px;
+  border-radius: 999px;
   padding: 8px 12px;
   cursor: pointer;
   font-size: 0.95rem;
+  font-weight: 700;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
 }
 
 .btn-edit {
-  background: #2563eb;
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
   color: #fff;
+  box-shadow: 0 8px 16px rgba(15, 118, 110, 0.16);
 }
 
 .btn-delete {
-  background: #dc2626;
+  background: #ef4444;
   color: #fff;
 }
 
@@ -200,18 +223,49 @@ const handlePasswordConfirm = async (password) => {
 
 .content {
   white-space: pre-wrap;
-  line-height: 1.7;
+  line-height: 1.8;
   color: #334155;
+  font-size: 1rem;
+  padding: 4px 0;
 }
 
 .state {
   padding: 20px;
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
 }
 
 .error {
   color: #dc2626;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 12px 0 24px;
+  }
+
+  .detail-card {
+    padding: 18px;
+  }
+
+  .detail-header {
+    flex-direction: column;
+  }
+
+  .header-meta {
+    width: 100%;
+    align-items: flex-start;
+    min-width: 0;
+  }
+
+  .action-row {
+    width: 100%;
+  }
+
+  .btn {
+    flex: 1;
+    justify-content: center;
+  }
 }
 </style>
