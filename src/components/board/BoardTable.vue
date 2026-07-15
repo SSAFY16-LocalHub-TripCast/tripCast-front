@@ -61,24 +61,25 @@ const formatDate = (value) => {
   width: 100%;
   border-collapse: collapse;
   background: #fff;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
 }
 .board-table th,
 .board-table td {
   padding: 14px 12px;
-  border-bottom: 1px solid #f1f1f1;
+  border-bottom: 1px solid #e2e8f0;
   text-align: left;
 }
 .board-table th {
   background: #f8fafc;
-  font-weight: 600;
+  font-weight: 700;
+  color: #334155;
 }
 .board-table tbody tr:hover {
-  background: #f9fafb;
+  background: #f8fafc;
+  transition: background 0.2s ease;
 }
 
 .post-title {
-  color: #2563eb;
+  color: #0f766e;
   text-decoration: none;
   font-weight: 600;
 }

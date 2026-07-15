@@ -1,11 +1,16 @@
 <template>
   <div class="page board-page">
     <div class="board-header">
-      <h2>게시판</h2>
+      <div>
+        <p class="board-subtitle">대전의 이야기를 나누는 공간</p>
+        <h2>커뮤니티 게시판</h2>
+      </div>
       <WriteButton />
     </div>
-    <BoardTable :posts="posts" />
-    <Pagination :page="page" :hasNext="hasNext" @change-page="setPage" />
+    <div class="board-card">
+      <BoardTable :posts="posts" />
+      <Pagination :page="page" :hasNext="hasNext" @change-page="setPage" />
+    </div>
     <ChatbotWidget />
   </div>
 </template>
@@ -50,10 +55,47 @@ watch(page, loadBoardPosts)
 </script>
 
 <style scoped>
+.board-page {
+  padding: 8px 0 24px;
+}
 .board-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
+  gap: 12px;
+}
+.board-subtitle {
+  margin: 0 0 4px;
+  color: #0f766e;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.board-header h2 {
+  margin: 0;
+  color: #0f172a;
+}
+.board-card {
+  padding: 16px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+@media (max-width: 768px) {
+  .board-page {
+    padding: 4px 0 20px;
+  }
+
+  .board-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .board-card {
+    padding: 12px;
+    border-radius: 14px;
+  }
 }
 </style>

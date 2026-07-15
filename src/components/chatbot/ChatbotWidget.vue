@@ -19,14 +19,14 @@ const toggleOpen = () => {
 <style scoped>
 .chatbot-widget {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: 24px;
+  bottom: 92px;
   z-index: 1000;
 }
 @media (max-width: 768px) {
   .chatbot-widget {
-    right: 0;
-    bottom: 0;
+    right: 16px;
+    bottom: 84px;
   }
 }
 </style>

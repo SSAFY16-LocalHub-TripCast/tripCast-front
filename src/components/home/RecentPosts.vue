@@ -1,6 +1,9 @@
 <template>
   <section class="recent-posts">
-    <h3>최근 게시글</h3>
+    <div class="section-title">
+      <h3>최근 게시글</h3>
+      <span>지금 가장 활발한 이야기</span>
+    </div>
     <ul>
       <li v-for="post in posts" :key="post.id">
         <span class="title">{{ post.title }}</span>
@@ -41,27 +44,52 @@ onMounted(loadRecentPosts)
 <style scoped>
 .recent-posts {
   padding: 24px;
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
 }
-.recent-posts h3 {
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 12px;
+}
+.section-title h3 {
+  margin: 0;
+  color: #0f172a;
+}
+.section-title span {
+  color: #0f766e;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.recent-posts ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 .recent-posts li {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+  transition:
+    background-color 0.2s ease,
+    padding-left 0.2s ease;
+}
+.recent-posts li:hover {
+  background-color: #f8fafc;
+  padding-left: 6px;
 }
 .recent-posts li:last-child {
   border-bottom: none;
 }
 .title {
-  font-weight: 500;
+  font-weight: 600;
+  color: #334155;
 }
 .date {
-  color: #777;
+  color: #64748b;
   font-size: 0.9rem;
 }
 </style>
